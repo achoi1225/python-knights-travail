@@ -16,41 +16,41 @@ class TestNodeInitialize(unittest.TestCase):
         self.assertListEqual(self.node.children, [])
 
 
-# class TestNodeParentSetter(unittest.TestCase):
-#     def setUp(self):
-#         self.child1 = tree.Node('child1')
-#         self.parent = tree.Node('parent')
-#         self.child2 = tree.Node('child2')
+class TestNodeParentSetter(unittest.TestCase):
+    def setUp(self):
+        self.child1 = tree.Node('child1')
+        self.parent = tree.Node('parent')
+        self.child2 = tree.Node('child2')
 
-#         self.child1.parent = self.parent
-#         self.child2.parent = self.parent
+        self.child1.parent = self.parent
+        self.child2.parent = self.parent
 
-#     def test_should_set_a_nodes_parent_to_the_passed_node(self):
-#         self.assertEqual(self.child1.parent, self.parent)
-#         self.assertEqual(self.child2.parent, self.parent)
+    def test_should_set_a_nodes_parent_to_the_passed_node(self):
+        self.assertEqual(self.child1.parent, self.parent)
+        self.assertEqual(self.child2.parent, self.parent)
 
-#     def test_should_add_the_child_node_to_the_passed_nodes_children(self):
-#         self.assertListEqual(self.parent.children, [self.child1, self.child2])
+    def test_should_add_the_child_node_to_the_passed_nodes_children(self):
+        self.assertListEqual(self.parent.children, [self.child1, self.child2])
 
-#     def test_should_not_add_the_same_node_twice(self):
-#         self.child2.parent = self.parent
-#         self.assertListEqual(self.parent.children, [self.child1, self.child2])
+    def test_should_not_add_the_same_node_twice(self):
+        self.child2.parent = self.parent
+        self.assertListEqual(self.parent.children, [self.child1, self.child2])
 
-#     def test_should_handle_None_without_error(self):
-#         self.child2.parent = None
-#         self.assertIsNone(self.child2.parent)
+    def test_should_handle_None_without_error(self):
+        self.child2.parent = None
+        self.assertIsNone(self.child2.parent)
 
-#     def test_when_reassigning_should_set_the_nodes_parent_to_the_new_parent(self):
-#         self.child2.parent = self.child1
-#         self.assertEqual(self.child2.parent, self.child1)
+    def test_when_reassigning_should_set_the_nodes_parent_to_the_new_parent(self):
+        self.child2.parent = self.child1
+        self.assertEqual(self.child2.parent, self.child1)
 
-#     def test_when_reassigning_should_add_the_node_to_the_new_parents_children(self):
-#         self.child2.parent = self.child1
-#         self.assertIn(self.child2, self.child1.children)
+    def test_when_reassigning_should_add_the_node_to_the_new_parents_children(self):
+        self.child2.parent = self.child1
+        self.assertIn(self.child2, self.child1.children)
 
-#     def test_when_reassigning_should_remove_the_node_from_its_former_parent(self):
-#         self.child2.parent = self.child1
-#         self.assertNotIn(self.child2, self.parent.children)
+    def test_when_reassigning_should_remove_the_node_from_its_former_parent(self):
+        self.child2.parent = self.child1
+        self.assertNotIn(self.child2, self.parent.children)
 
 # class TreeNodeAddChild(unittest.TestCase):
 #     def setUp(self):

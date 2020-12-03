@@ -18,12 +18,13 @@ class Node:
 
     @parent.setter
     def parent(self, node):
-        # if self.parent:
-        #     self.parent.remove_child(self)
+        if self._parent==node:
+            return
+        if self._parent:
+            self._parent.remove_child(self)
         self._parent = node
-        print(f"PARENT! {self.parent}")
-        if node != None:
-            node.add_child(self)
+        if self._parent != None:
+            self._parent.add_child(self)
 
     def add_child(self, node):
         if node not in self._children:
@@ -35,13 +36,13 @@ class Node:
             self._children.remove(node)
             node.parent = None
 
-# ===========================================================
-node1 = Node("root1")
-node2 = Node("root2")
-node3 = Node("root3")
+    def depth_search(self, value):
+        if self._value == value:
+            return self
+        if self._children:
+            for child in self._children:
+                result = child.depth_search(value)
+                if result:
+                    return result
 
-node3.parent = node1
-node3.parent = node2
-
-print(node1.children)
-print(node2.children)
+    

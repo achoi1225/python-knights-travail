@@ -45,4 +45,44 @@ class Node:
                 if result:
                     return result
 
-    
+    def breadth_search(self, value):
+        if self._value == value:
+            return self.value
+        if self._children:
+            nodes = self._children
+            while len(nodes):
+                if nodes[0].value == value:
+                    return nodes[0].value
+                else:
+                    if nodes[0].children:
+                        for child in nodes[0].children:
+                            nodes.append(child)
+                    nodes.pop(0)
+
+                            
+
+# child1 = Node('child1')
+# child2 = Node('child2')
+# child3 = Node('child3')
+# parent = Node('parent')
+
+# a = Node('a')
+# b = Node('b')
+# c = Node('c')
+# d = Node('d')
+# e = Node('e')
+# f = Node('f')
+
+# child1.add_child(a)
+# child1.add_child(b)
+# child2.add_child(c)
+# child2.add_child(d)
+# child3.add_child(e)
+# child3.add_child(f)
+
+# child2.add_child(child3)
+
+# parent.add_child(child1)
+# parent.add_child(child2)
+
+# print(f"RESULT!! {parent.breadth_search('j')}")

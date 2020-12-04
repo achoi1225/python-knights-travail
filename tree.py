@@ -47,12 +47,12 @@ class Node:
 
     def breadth_search(self, value):
         if self._value == value:
-            return self.value
+            return self
         if self._children:
             nodes = self._children
             while len(nodes):
                 if nodes[0].value == value:
-                    return nodes[0].value
+                    return nodes[0]
                 else:
                     if nodes[0].children:
                         for child in nodes[0].children:

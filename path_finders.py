@@ -22,15 +22,16 @@ class KnightPathFinder:
         validMoves = [coord for coord in moves if coord[0] >= 0 and coord[0] <= 7 and coord[1] >= 0 and coord[1] <= 7]
         filtered_moves = set(validMoves) - self._considered_positions
         self._considered_positions = self._considered_positions | set(validMoves)
-        # print(f"filtered {filtered_moves}")
-        # print(f"considered {self._considered_positions}")
-
         return filtered_moves
 
+    def build_move_tree(self):
+        new_moves=list(self.new_move_positions(self._root.value))
+        print(new_moves)
+        for move in new_moves:
+            child_node=Node(move)
+            self._root.add_child(child_node)
+
+
 test = KnightPathFinder((0,0))
-print(test.new_move_positions((0,0)))
-
-a = {1,2,3}
-b= {1,2,3,4}
-
-print(b-a)
+test.build_move_tree()
+print(test._root.children)
